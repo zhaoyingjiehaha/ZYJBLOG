@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haha.blog.mapper.BlogTypeMapper">
+    <insert id="insertBlogType" useGeneratedKeys="true" keyProperty="id">
+        insert into blogtype values(null,#{typeName},0)
+    </insert>
+    <update id="upCount">
+        update blogtype set count = count + 1 where id = #{typeId}
+    </update>
+    <update id="downCoount">
+        update blogtype set count = count - 1 where id = #{typeId}
+    </update>
+    <update id="updateBlogType">
+        update blogtype set type_name = #{typeName} where id = #{id}
+    </update>
+    <delete id="deleteType">
+        delete from blogtype where id = #{typeId}
+    </delete>
+
+    <select id="getAllType" resultType="com.haha.blog.pojo.BlogType">
+        select * from blogtype
+    </select>
+    <select id="getTypeById" resultType="com.haha.blog.pojo.BlogType">
+        select * from blogtype where id = #{typeId}
+    </select>
+    
+</mapper>

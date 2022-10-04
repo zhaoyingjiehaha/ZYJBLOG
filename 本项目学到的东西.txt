@@ -1,0 +1,49 @@
+1.学会markdown到showndown的展示   -->   showdown.js
+2.知道了RedirectAttribute类(接口)的存在，极大方便了数据共享
+3.获取数据存储时间，MySQL用TimeStamp存储，默认值为CURRENT_TIMESTAMP
+	在Java中也用TimeStamp封装类存储，在表单输入时无需输入，可在调用service
+	时使用set方法new TimeStamp(System.currentTimeMillis())
+4.MySQL也有枚举类型Enum,bool和boolean都对应tinyint
+5.学会分页连续显示序号
+      <td th:text="${page.pageSize*(page.pageNum-1)+status.count}"></td>
+6.管理页面和公众页面注意数据展示的区别，例如本项目公众页面只展示已发布的博客
+7.了解网页页面模块可独立加载，可对应return "页面名称::xxx"   -->    xxx对应需加载的位置<div th:fragment></div>
+8.   th:xxx=""的字符串拼接：   了解了方法②，可直接由"||"封装起来
+			①${xxx.xxx} + 'xxx'
+			②|${xxx.xxx} xxx|
+
+9.初步学会分级评论功能
+10.在js代码中，若要使用thymeleaf的${}、 @{}功能，需加上th:inline="javascript"
+11.对于多页面共同部分，可抽取公共部分，可由一个 @GetMapping 控制所有的该部分数据加载，在所有页面里加入js：例如：
+		$(function () {
+        $("#blog-message").load("allCount");    #blog-message表示数据显示的地方的id    allCount表示GetMapping方法的URI
+      });																										 该方法 return "common::allCount"
+
+
+		使用<div th:include="common :: commonCount"></div> 进行引用
+
+
+		common.html:
+
+<div th:fragment="commonCount">
+    <div id="blog-message">
+        <div th:fragment="allCount" class="ui inverted link list" style="align-content: center;margin-top: 10px">
+            <div class="m-text-thin" style="text-align: left;margin-left: 75px;">
+                文章总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;"
+                          th:text="${allBlogCount}"> 14 </h2> 篇
+            </div>
+            <div class="m-text-thin" style="text-align: left;margin-left: 75px">
+                访问总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;"
+                          th:text="${allCustomerCount}"> 14 </h2> 次
+            </div>
+            <div class="m-text-thin" style="text-align: left;margin-left: 75px">
+                评论总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;"
+                          th:text="${allMessageCount}"> 14 </h2> 条
+            </div>
+            <div class="m-text-thin" style="text-align: left;margin-left: 75px">
+                留言总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;">
+                暂未开发留言功能 </h2> 条
+            </div>
+        </div>
+    </div>
+</div>
