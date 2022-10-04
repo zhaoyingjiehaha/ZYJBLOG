@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.haha.blog.mapper.BlogMapper">
     <insert id="insertBlog" useGeneratedKeys="true" keyProperty="id">
-        insert into blog values(null,#{title},#{content},#{typeId},#{commentId},#{date},#{profile},0,#{origin},#{status})
+        insert into blog values(null,#{title},#{content},#{avatar},#{typeId},#{commentId},#{date},#{profile},0,#{origin},#{status})
     </insert>
     <update id="updateEye">
         update blog set eye = eye + 1 where id = #{id}
     </update>
     <update id="updateBlog">
-        update blog set title = #{title}, content = #{content}, type_id = #{typeId}, date = #{date},
+        update blog set title = #{title}, content = #{content}, avatar = #{avatar} ,type_id = #{typeId}, date = #{date},
                         profile = #{profile}, origin = #{origin}, status = #{status} where id = #{id}
     </update>
     <delete id="deleteBlog">

@@ -14,6 +14,7 @@ public class Blog {
     private Integer id;
     private String title;
     private String content;
+    private String avatar;
     private Integer typeId;
     private String commentId;//无字段
     private Timestamp date;
