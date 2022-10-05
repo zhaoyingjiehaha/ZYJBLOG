@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
           th:href="@{/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+
+    <script type="text/javascript">
+        function Check(){
+            var photoName = document.getElementById("photoName").value;
+            if (photoName == "" || photoName.value == null ) {
+                alert("请输入图片名称");
+            }
+        }
+    </script>
+    
 </head>
 <body>
 
@@ -54,6 +64,17 @@
 <!--中间内容-->
 <div class="">
     <div class="ui container">
+
+        <!--图片上传-->
+        <form th:action="@{/imgup(blogId=${blog.id})}" method="post" enctype="multipart/form-data" class="ui form">
+            <div class="ui left labeled input" style="width: 100%">
+                <input type="file" name="images" multiple style="width: 30%">
+                <input type="text" id="photoName" name="photoName" placeholder="请输入该图片名称，便于引用" onclose="Check();" style="width: 30%">
+                <input type="submit" value="上传" style="background-color: #00B5AD;color: white">
+                <p style="width: 35%;color: red;background-color: white;text-align: center;padding-top: 13px">注意：请在编辑文章前上传图片，否则已编辑内容将丢失！</p>
+            </div>
+        </form>
+        
         <form id="blog-form" th:action="@{/blog}" method="post" class="ui form">
             <input type="hidden" name="_method" value="put">
             <input type="hidden" name="status">
@@ -337,21 +358,37 @@
                 }]
             },
             typeId: {
-                identifier: 'type.id',
+                identifier: 'typeId',
                 rules: [{
                     type: 'empty',
                     prompt: '标题：请输入博客分类'
                 }]
             },
-            firstPicture : {
-              identifier: 'firstPicture',
+            avatar : {
+              identifier: 'avatar',
               rules: [{
                 type : 'empty',
                 prompt: '标题：请输入博客首图'
               }]
             },
-            description: {
-                identifier: 'description',
+
+            images : {
+                identifier: 'images',
+                rules: [{
+                    type : 'empty',
+                    prompt: '标题：请选择图片'
+                }]
+            },
+            photoName : {
+                identifier: 'photoName',
+                rules: [{
+                    type : 'empty',
+                    prompt: '标题：请输入图片名称'
+                }]
+            },
+    
+            profile: {
+                identifier: 'profile',
                 rules: [{
                     type: 'empty',
                     prompt: '标题：请输入博客描述'
