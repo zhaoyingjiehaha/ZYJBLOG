@@ -35,7 +35,7 @@
 <!--        <a href="#" class="m-item item m-mobile-hide"><i class="clock icon"></i>时间轴</a>-->
 <!--        <a href="#" class="m-item item m-mobile-hide"><i class="music icon"></i>音乐盒</a>-->
         <a th:href="@{/message}" class="m-item item m-mobile-hide"><i class="book icon"></i>留言板</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="pencil alternate icon"></i>友人帐</a>
+        <a th:href="@{/friends}" class="m-item item m-mobile-hide"><i class="pencil alternate icon"></i>友人帐</a>
 <!--        <a href="#" class="m-item item m-mobile-hide"><i class="image icon"></i>照片墙</a>-->
         <a th:href="@{/about}" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
       <a th:href="${session.loginUser} == null ? @{/admin/login} : @{/admin/blogs}" class="m-item item"><i class="info icon"></i>admin</a>

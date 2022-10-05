@@ -16,14 +16,15 @@
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui olive header item" style="font-family: STSong">ZYJBLOG</h2>
             <!--<div class="right m-item item m-mobile-hide">-->
-                <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+                <a th:href="@{/}" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
                 <a th:href="@{/types}" class="m-item item m-mobile-hide"><i class="clone outline icon"></i>分类</a>
 <!--                <a href="#" class="m-item item m-mobile-hide"><i class="clock icon"></i>时间轴</a>-->
 <!--                <a href="#" class="m-item item m-mobile-hide"><i class="music icon"></i>音乐盒</a>-->
-<!--                <a href="#" class="m-item item m-mobile-hide"><i class="book icon"></i>留言板</a>-->
-                <a href="#" class="active m-item item m-mobile-hide"><i class="pencil alternate icon"></i>友人帐</a>
+                <a th:href="@{/message}" class="m-item item m-mobile-hide"><i class="book icon"></i>留言板</a>
+                <a th:href="@{/friends}" class="active m-item item m-mobile-hide"><i class="pencil alternate icon"></i>友人帐</a>
 <!--                <a href="#" class="olive m-item item m-mobile-hide"><i class="image icon"></i>照片墙</a>-->
                 <a th:href="@{/about}" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <a th:href="${session.loginUser} == null ? @{/admin/login} : @{/admin/blogs}" class="m-item item"><i class="info icon"></i>admin</a>
             <!--</div>-->
             <div class="right m-item item m-mobile-hide">
                 <form name="search" th:action="@{/search}" method="get" target="_blank">
@@ -72,9 +73,9 @@
                         <br>
                         <div class="m-margin-left-mini m-margin-tb-tiny" style="font-size: large;font-weight: bold">申请格式</div>
                         <br>
-                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">博客标题：ONESTAR</li>
-                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">博客地址：https://onestar.newstar.net.cn/</li>
-                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">图片地址：https://onestar.newstar.net.cn/images/me.jpg</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">博客标题：ZYJBLOG</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">博客地址：https://              </li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">图片地址：https://                </li>
                     </ui>
             </div>
         </div>
@@ -87,13 +88,13 @@
                 <div class="ui stackable m-container-mini m-opacity grid">
 
                     <!--友人帐显示区域-->
-                    <div class="m-margin-tb-tiny four wide column">
-                        <a href="#" class="class_outer" target="_blank">
+                    <div class="m-margin-tb-tiny four wide column" th:each="friendLink : ${friendLinks}">
+                        <a href="#" th:href="${friendLink.blogaddress}" class="class_outer" target="_blank">
                             <div align="center">
                                 <div class="friends-link">
-                                    <img src="../static/images/me.jpg"  alt="" class="friends-link-image">
+                                    <img src="../static/images/me.jpg" th:src="${friendLink.pictureaddress}"  alt="" class="friends-link-image">
                                     <div class="m-margin-top">
-                                     <h4 class="m-font-size-text-friends m-margin-tb-tiny">ONESTAR</h4>
+                                     <h4 class="m-font-size-text-friends m-margin-tb-tiny" th:text="${friendLink.blogname}">ZYJBLOG</h4>
                                     </div>
                                 </div>
                             </div>

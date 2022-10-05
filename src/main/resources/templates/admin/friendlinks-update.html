@@ -54,19 +54,20 @@
   <div  class="m-container-small m-padded-tb-massive">
     <div class="ui container">
       <form th:action="@{/friend}" method="post" class="ui form">
-        <input type="hidden" name="id">
+        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="id" th:value="${friendLink.id}">
         <div class=" field">
           <div class="ui left labeled input m-margin-top">
             <label class="ui teal basic label">博客名称</label>
-            <input type="text" name="blogname" placeholder="博客名称">
+            <input type="text" name="blogname" placeholder="博客名称" th:value="${friendLink.blogname} != null ? ${friendLink.blogname}">
           </div>
           <div class="ui left labeled input m-margin-top">
             <label class="ui teal basic label">博客地址</label>
-            <input type="text" name="blogaddress" placeholder="博客地址">
+            <input type="text" name="blogaddress" placeholder="博客地址" th:value="${friendLink.blogaddress} != null ? ${friendLink.blogaddress}">
           </div>
           <div class="ui left labeled input m-margin-top">
             <label class="ui teal basic label">图片地址</label>
-            <input type="text" name="pictureaddress" placeholder="图片地址">
+            <input type="text" name="pictureaddress" placeholder="图片地址" th:value="${friendLink.pictureaddress} != null ? ${friendLink.pictureaddress}">
           </div>
         </div>
 
