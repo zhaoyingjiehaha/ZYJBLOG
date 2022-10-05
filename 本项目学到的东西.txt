@@ -14,7 +14,9 @@
 
 9.初步学会分级评论功能
 10.在js代码中，若要使用thymeleaf的${}、 @{}功能，需加上th:inline="javascript"
-11.对于多页面共同部分，可抽取公共部分，可由一个 @GetMapping 控制所有的该部分数据加载，在所有页面里加入js：例如：
+11.mybatis不可以在yml等配置文件中设置log日志，否则启动失败
+
+12.对于多页面共同部分，可抽取公共部分，可由一个 @GetMapping 控制所有的该部分数据加载，在所有页面里加入js：例如：
 		$(function () {
         $("#blog-message").load("allCount");    #blog-message表示数据显示的地方的id    allCount表示GetMapping方法的URI
       });																										 该方法 return "common::allCount"
